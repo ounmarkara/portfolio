@@ -1,0 +1,359 @@
+"use client"
+
+import Link from "next/link"
+import { Linkedin, Instagram } from "lucide-react"
+import { useEffect, useState } from "react"
+
+export default function Portfolio() {
+  const [scrollY, setScrollY] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  const smoothScrollTo = (elementId: string) => {
+    const element = document.getElementById(elementId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
+    }
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      setScrollY(currentScrollY)
+      setIsScrolled(currentScrollY > 50) // Change background after 50px scroll
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    // Trigger animations on load
+    setTimeout(() => setIsVisible(true), 100)
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Navigation - Fixed Position with Dynamic Background */}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200"
+            : "bg-[#1a237e]/90 backdrop-blur-sm border-b border-blue-800/20"
+        }`}
+      >
+        <div className="container mx-auto px-6 py-6">
+          <div
+            className={`flex justify-start space-x-16 ml-8 transition-all duration-1000 ${
+              isVisible ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
+            }`}
+          >
+            <button
+              onClick={() => smoothScrollTo("hello")}
+              className={`text-sm font-normal tracking-wide transition-all duration-300 hover:scale-105 cursor-pointer ${
+                isScrolled ? "text-gray-800 hover:text-blue-600" : "text-white hover:text-blue-200"
+              }`}
+            >
+              HELLO
+            </button>
+            <button
+              onClick={() => smoothScrollTo("about")}
+              className={`text-sm font-normal tracking-wide transition-all duration-300 hover:scale-105 cursor-pointer ${
+                isScrolled ? "text-gray-800 hover:text-blue-600" : "text-white hover:text-blue-200"
+              }`}
+            >
+              ABOUT ME
+            </button>
+            <button
+              onClick={() => smoothScrollTo("contact")}
+              className={`text-sm font-normal tracking-wide transition-all duration-300 hover:scale-105 cursor-pointer ${
+                isScrolled ? "text-gray-800 hover:text-blue-600" : "text-white hover:text-blue-200"
+              }`}
+            >
+              CONTACT
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Header Section - Adjust padding for fixed nav */}
+      <header id="hello" className="bg-[#1a237e] text-white relative overflow-hidden min-h-[60vh] pt-20">
+        {/* Animated background particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div
+            className="absolute w-2 h-2 bg-blue-400 rounded-full animate-pulse"
+            style={{
+              top: "20%",
+              left: "10%",
+              animationDelay: "0s",
+              animationDuration: "3s",
+            }}
+          ></div>
+          <div
+            className="absolute w-1 h-1 bg-blue-300 rounded-full animate-pulse"
+            style={{
+              top: "60%",
+              left: "80%",
+              animationDelay: "1s",
+              animationDuration: "4s",
+            }}
+          ></div>
+          <div
+            className="absolute w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"
+            style={{
+              top: "40%",
+              left: "20%",
+              animationDelay: "2s",
+              animationDuration: "2s",
+            }}
+          ></div>
+        </div>
+
+        {/* Hero Content - Remove old nav, keep only hero content */}
+        <div className="container mx-auto px-6 py-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div
+              className={`space-y-6 ml-8 transition-all duration-1000 delay-300 ${
+                isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+              }`}
+            >
+              <h1 className="text-6xl lg:text-7xl font-light tracking-wide leading-tight hover:text-blue-100 transition-colors duration-500">
+                Oun Markara
+              </h1>
+              <div className="text-base text-white leading-relaxed max-w-2xl space-y-1">
+                {/* <p className="animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
+                  PhD Candidate at PKNU | Quantum Compiler | Qubit Plane Architecture |
+                </p> */}
+                <p className="animate-fade-in-up" style={{ animationDelay: "1s" }}>
+                  Full-Stack Developer | Freelancer
+                </p>
+              </div>
+
+              {/* Social Links */}
+              <div
+                className={`flex space-x-6 pt-6 transition-all duration-1000 delay-700 ${
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                }`}
+              >
+                <Link
+                  href="https://www.linkedin.com/in/ounmarkara/"
+                  className="text-white hover:text-blue-200 transition-all duration-300 hover:scale-125 hover:rotate-12"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/ounmarkara"
+                  className="text-white hover:text-blue-200 transition-all duration-300 hover:scale-125 hover:rotate-12"
+                >
+                  <Instagram className="w-5 h-5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* 3D Isometric Laptops Illustration with Animation */}
+            <div
+              className={`flex justify-center lg:justify-end relative transition-all duration-1000 delay-500 ${
+                isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
+              }`}
+            >
+              <div
+                className="relative w-96 h-96"
+                style={{
+                  transform: `translateY(${scrollY * 0.1}px) rotateX(${scrollY * 0.02}deg)`,
+                }}
+              >
+                {/* Stack of laptops in isometric view with hover animation */}
+                <div className="absolute inset-0 hover:scale-105 transition-transform duration-500 cursor-pointer group">
+                  {/* Bottom laptop */}
+                  <div
+                    className="absolute bottom-0 right-8 w-64 h-40 bg-gradient-to-br from-gray-600 to-gray-800 transform rotate-12 skew-x-12 rounded-lg shadow-2xl group-hover:shadow-3xl transition-all duration-500 animate-float"
+                    style={{ animationDelay: "0s" }}
+                  ></div>
+                  <div className="absolute bottom-2 right-10 w-60 h-36 bg-gradient-to-br from-gray-700 to-gray-900 transform rotate-12 skew-x-12 rounded-lg"></div>
+
+                  {/* Middle laptop */}
+                  <div
+                    className="absolute bottom-8 right-12 w-64 h-40 bg-gradient-to-br from-gray-500 to-gray-700 transform rotate-12 skew-x-12 rounded-lg shadow-2xl group-hover:shadow-3xl transition-all duration-500 animate-float"
+                    style={{ animationDelay: "0.5s" }}
+                  ></div>
+                  <div className="absolute bottom-10 right-14 w-60 h-36 bg-gradient-to-br from-gray-600 to-gray-800 transform rotate-12 skew-x-12 rounded-lg"></div>
+
+                  {/* Top laptop */}
+                  <div
+                    className="absolute bottom-16 right-16 w-64 h-40 bg-gradient-to-br from-gray-400 to-gray-600 transform rotate-12 skew-x-12 rounded-lg shadow-2xl group-hover:shadow-3xl transition-all duration-500 animate-float"
+                    style={{ animationDelay: "1s" }}
+                  ></div>
+                  <div className="absolute bottom-18 right-18 w-60 h-36 bg-gradient-to-br from-gray-500 to-gray-700 transform rotate-12 skew-x-12 rounded-lg"></div>
+
+                  {/* Keyboard details */}
+                  <div className="absolute bottom-20 right-20 w-52 h-28 bg-gradient-to-br from-gray-800 to-black transform rotate-12 skew-x-12 rounded-md opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
+
+                  {/* Glowing effect */}
+                  <div className="absolute bottom-16 right-16 w-64 h-40 bg-blue-400 transform rotate-12 skew-x-12 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* About Section */}
+      <section id="about" className="container mx-auto px-6 py-20">
+        <div className="max-w-4xl ml-8">
+          <h2 className="text-5xl font-light text-gray-500 mb-12 hover:text-gray-700 transition-colors duration-500">
+            About ME
+          </h2>
+          <div className="space-y-6 text-gray-600 leading-relaxed text-base">
+            <p className="hover:text-gray-800 transition-colors duration-300 cursor-default">
+              I am a full-stack developer with a strong focus on modern web technologies, specializing in Spring Boot 
+              for backend development and Next.js for the frontend. My interests include building scalable applications, 
+              backend architecture, and API integration. I developed a complete full-stack project using PostgreSQL,
+              where I implemented both server-side and client-side features from scratch.{" "}
+              .
+            </p>
+            <p className="hover:text-gray-800 transition-colors duration-300 cursor-default">
+              In my previous experience, I worked on academic and personal projects involving full-stack development,
+               with a solid understanding of data structures, clean coding practices, and responsive design. I enjoy 
+               solving technical challenges, collaborating in team environments, and continuously expanding my skills
+                across the software development stack. I am always open to learning new technologies and contributing
+                to innovative projects.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="container mx-auto px-6 py-16">
+        <div className="max-w-4xl ml-8 py-16">
+          <h2 className="text-sm font-normal text-gray-400 tracking-[0.2em] mb-16">PROJECTS</h2>
+          <div className="space-y-16">
+            {/* Project 1 */}
+            <div className="flex gap-8 group hover:bg-gray-50 p-4 rounded-lg transition-all duration-300 -ml-4">
+              <div className="flex flex-col items-center pt-1">
+                <div className="w-3 h-3 bg-blue-500 rounded-full group-hover:scale-125 group-hover:bg-blue-600 transition-all duration-300"></div>
+                <div className="w-px h-32 bg-gray-300 mt-4 group-hover:bg-blue-400 transition-colors duration-300"></div>
+              </div>
+              <div className="flex-1 pb-8">
+                <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
+                  kSHRD: Lumnov - Rental Community Platform
+                </h3>
+                <p className="text-sm text-gray-400 mb-4 tracking-wide">2025.04 - 2025.06</p>
+                <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
+                  LUMNOV makes it easy to find available rooms and houses, helping you start discovering your next home and connect with a community that feels like family.</p>
+              </div>
+            </div>
+
+            {/* Project 2 */}
+            <div className="flex gap-8 group hover:bg-gray-50 p-4 rounded-lg transition-all duration-300 -ml-4">
+              <div className="flex flex-col items-center pt-1">
+                <div className="w-3 h-3 bg-blue-500 rounded-full group-hover:scale-125 group-hover:bg-blue-600 transition-all duration-300"></div>
+                <div className="w-px h-32 bg-gray-300 mt-4 group-hover:bg-blue-400 transition-colors duration-300"></div>
+              </div>
+              <div className="flex-1 pb-8">
+                <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
+                  ISTAD: Eazy Found - Service Listing Website
+                </h3>
+                <p className="text-sm text-gray-400 mb-4 tracking-wide">2024.09 - 2024.10</p>
+                <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
+                  A modern platform designed to connect users with various local services efficiently.</p>             
+                </div>
+            </div>
+          </div>
+        </div>
+
+         <div className="max-w-4xl ml-8">
+          <h2 className="text-sm font-normal text-gray-400 tracking-[0.2em] mb-16">Education</h2>
+
+          <div className="space-y-16">
+            {/* Project 1 */}
+            <div className="flex gap-8 group hover:bg-gray-50 p-4 rounded-lg transition-all duration-300 -ml-4">
+              <div className="flex flex-col items-center pt-1">
+                <div className="w-3 h-3 bg-blue-500 rounded-full group-hover:scale-125 group-hover:bg-blue-600 transition-all duration-300"></div>
+                <div className="w-px h-32 bg-gray-300 mt-4 group-hover:bg-blue-400 transition-colors duration-300"></div>
+              </div>
+              <div className="flex-1 pb-8">
+                <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
+                  Korea Software HRD Center
+                </h3>
+                <p className="text-sm text-gray-400 mb-4 tracking-wide">2025.04 - 2025.06</p>
+                <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
+                  Certificate of Completion basic course </p>
+              </div>
+            </div>
+
+            {/* Project 3 */}
+            <div className="flex gap-8 group hover:bg-gray-50 p-4 rounded-lg transition-all duration-300 -ml-4">
+              <div className="flex flex-col items-center pt-1">
+                <div className="w-3 h-3 bg-blue-500 rounded-full group-hover:scale-125 group-hover:bg-blue-600 transition-all duration-300"></div>
+                <div className="w-px h-32 bg-gray-300 mt-4 group-hover:bg-blue-400 transition-colors duration-300"></div>
+              </div>
+              <div className="flex-1 pb-8">
+                <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
+                  Institute of Science and Technology Advanced Development - ISTAD
+                </h3>
+                <p className="text-sm text-gray-400 mb-4 tracking-wide">2024.08 - 2024.10</p>
+                <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
+                  Certificate of Completion Web Development course </p>
+              </div>
+            </div>
+
+            <div className="flex gap-8 group hover:bg-gray-50 p-4 rounded-lg transition-all duration-300 -ml-4">
+              <div className="flex flex-col items-center pt-1">
+                <div className="w-3 h-3 bg-blue-500 rounded-full group-hover:scale-125 group-hover:bg-blue-600 transition-all duration-300"></div>
+                <div className="w-px h-32 bg-gray-300 mt-4 group-hover:bg-blue-400 transition-colors duration-300"></div>
+              </div>
+              <div className="flex-1 pb-8">
+                <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
+                  RUPP - Royal University of Phnom Penh 
+                </h3>
+                <p className="text-sm text-gray-400 mb-4 tracking-wide">2021 - 2024</p>
+                <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
+                  Bachelor Information Technology </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      {/* Contact Section */}
+      <section id="contact" className="bg-gradient-to-r from-[#1a237e] via-purple-600 to-pink-500 py-20 text-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl ml-8">
+            <h2 className="text-5xl font-light mb-16 tracking-wide">Get in touch_</h2>
+
+            <div className="space-y-8 text-lg">
+              <div className="flex items-center space-x-4">
+                <span className="font-medium tracking-wider">PHONE:</span>
+                <span className="text-blue-100 hover:underline">(885) 76-286-5959</span>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <span className="font-medium tracking-wider">FACEBOOK:</span>
+                <Link href={"https://www.facebook.com/oun.markara.2025/"}>  <span className="text-blue-100 hover:underline">Oun Markara  </span></Link>
+               
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <span className="font-medium tracking-wider">EMAIL:</span>
+                <span className="text-blue-100 hover:underline">ounmarkaraprof@gmail.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-r from-[#1a237e] via-purple-600 to-pink-500 text-white py-8">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-sm opacity-70">
+            © 2025 Oun Markara. NOT All Rights Reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+  )
+}

@@ -178,7 +178,7 @@ export default function Portfolio() {
      <section id="about" className="container mx-auto px-6 py-20">
   <div className="max-w-4xl ml-8">
     <TypewriterHeading
-      text="About ME_"
+      text="About Me_"
       className="text-5xl font-normal text-gray-500 mb-12 hover:text-gray-700 transition-colors duration-500"
     />
     <div className="space-y-6 text-gray-600 leading-relaxed text-base">

@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { Linkedin, Instagram } from "lucide-react"
 import { useEffect, useState } from "react"
+import TypewriterHeading from "@/components/TypewriterHeading"
+import ProgrammerCard from "@/components/ProgrammerCard"
 
 export default function Portfolio() {
   const [scrollY, setScrollY] = useState(0)
@@ -119,7 +121,7 @@ export default function Portfolio() {
                 isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
               }`}
             >
-              <h1 className="text-6xl lg:text-7xl font-light tracking-wide leading-tight hover:text-blue-100 transition-colors duration-500">
+              <h1 className="text-6xl lg:text-7xl font-bold tracking-wide leading-tight hover:text-blue-100 transition-colors duration-500">
                 Oun Markara
               </h1>
               <div className="text-base text-white leading-relaxed max-w-2xl space-y-1">
@@ -165,34 +167,7 @@ export default function Portfolio() {
                 }}
               >
                 {/* Stack of laptops in isometric view with hover animation */}
-                <div className="absolute inset-0 hover:scale-105 transition-transform duration-500 cursor-pointer group">
-                  {/* Bottom laptop */}
-                  <div
-                    className="absolute bottom-0 right-8 w-64 h-40 bg-gradient-to-br from-gray-600 to-gray-800 transform rotate-12 skew-x-12 rounded-lg shadow-2xl group-hover:shadow-3xl transition-all duration-500 animate-float"
-                    style={{ animationDelay: "0s" }}
-                  ></div>
-                  <div className="absolute bottom-2 right-10 w-60 h-36 bg-gradient-to-br from-gray-700 to-gray-900 transform rotate-12 skew-x-12 rounded-lg"></div>
-
-                  {/* Middle laptop */}
-                  <div
-                    className="absolute bottom-8 right-12 w-64 h-40 bg-gradient-to-br from-gray-500 to-gray-700 transform rotate-12 skew-x-12 rounded-lg shadow-2xl group-hover:shadow-3xl transition-all duration-500 animate-float"
-                    style={{ animationDelay: "0.5s" }}
-                  ></div>
-                  <div className="absolute bottom-10 right-14 w-60 h-36 bg-gradient-to-br from-gray-600 to-gray-800 transform rotate-12 skew-x-12 rounded-lg"></div>
-
-                  {/* Top laptop */}
-                  <div
-                    className="absolute bottom-16 right-16 w-64 h-40 bg-gradient-to-br from-gray-400 to-gray-600 transform rotate-12 skew-x-12 rounded-lg shadow-2xl group-hover:shadow-3xl transition-all duration-500 animate-float"
-                    style={{ animationDelay: "1s" }}
-                  ></div>
-                  <div className="absolute bottom-18 right-18 w-60 h-36 bg-gradient-to-br from-gray-500 to-gray-700 transform rotate-12 skew-x-12 rounded-lg"></div>
-
-                  {/* Keyboard details */}
-                  <div className="absolute bottom-20 right-20 w-52 h-28 bg-gradient-to-br from-gray-800 to-black transform rotate-12 skew-x-12 rounded-md opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
-
-                  {/* Glowing effect */}
-                  <div className="absolute bottom-16 right-16 w-64 h-40 bg-blue-400 transform rotate-12 skew-x-12 rounded-lg opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl"></div>
-                </div>
+                {/* <ProgrammerCard/> */}
               </div>
             </div>
           </div>
@@ -200,35 +175,30 @@ export default function Portfolio() {
       </header>
 
       {/* About Section */}
-      <section id="about" className="container mx-auto px-6 py-20">
-        <div className="max-w-4xl ml-8">
-          <h2 className="text-5xl font-light text-gray-500 mb-12 hover:text-gray-700 transition-colors duration-500">
-            About ME
-          </h2>
-          <div className="space-y-6 text-gray-600 leading-relaxed text-base">
-            <p className="hover:text-gray-800 transition-colors duration-300 cursor-default">
-              I am a full-stack developer with a strong focus on modern web technologies, specializing in Spring Boot 
-              for backend development and Next.js for the frontend. My interests include building scalable applications, 
-              backend architecture, and API integration. I developed a complete full-stack project using PostgreSQL,
-              where I implemented both server-side and client-side features from scratch.{" "}
-              .
-            </p>
-            <p className="hover:text-gray-800 transition-colors duration-300 cursor-default">
-              In my previous experience, I worked on academic and personal projects involving full-stack development,
-               with a solid understanding of data structures, clean coding practices, and responsive design. I enjoy 
-               solving technical challenges, collaborating in team environments, and continuously expanding my skills
-                across the software development stack. I am always open to learning new technologies and contributing
-                to innovative projects.
-            </p>
-          </div>
-        </div>
-      </section>
+     <section id="about" className="container mx-auto px-6 py-20">
+  <div className="max-w-4xl ml-8">
+    <TypewriterHeading
+      text="About ME_"
+      className="text-5xl font-normal text-gray-500 mb-12 hover:text-gray-700 transition-colors duration-500"
+    />
+    <div className="space-y-6 text-gray-600 leading-relaxed text-base">
+      <p className="hover:text-gray-800 transition-colors duration-300 cursor-default">
+        I'm a passionate full-stack developer focused on building efficient, scalable web applications using Spring Boot and Next.js. Recently, I developed a full-stack project with PostgreSQL, managing everything from API design to responsive UI.
+      </p>
+      <p className="hover:text-gray-800 transition-colors duration-300 cursor-default">
+        My background includes academic and personal projects where I applied problem-solving, clean code practices, and responsive design. I value collaboration and continuous learning, always eager to explore new technologies and innovate.
+      </p>
+      
+    </div>
+  </div>
+</section>
+
 
       {/* Projects Section */}
-      <section className="container mx-auto px-6 py-16">
-        <div className="max-w-4xl ml-8 py-16">
-          <h2 className="text-sm font-normal text-gray-400 tracking-[0.2em] mb-16">PROJECTS</h2>
-          <div className="space-y-16">
+      <section className="container mx-auto px-6 py-8">
+        <div className="max-w-4xl ml-8 py-8">
+          <h2 className="text-sm font-bold text-gray-400 tracking-[0.2em] mb-16">PROJECTS</h2>
+          <div>
             {/* Project 1 */}
             <div className="flex gap-8 group hover:bg-gray-50 p-4 rounded-lg transition-all duration-300 -ml-4">
               <div className="flex flex-col items-center pt-1">
@@ -237,7 +207,7 @@ export default function Portfolio() {
               </div>
               <div className="flex-1 pb-8">
                 <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
-                  kSHRD: Lumnov - Rental Community Platform
+                  kSHRD: LUMNOV - RENTAL COMMUNITY PLATFORM
                 </h3>
                 <p className="text-sm text-gray-400 mb-4 tracking-wide">2025.04 - 2025.06</p>
                 <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
@@ -253,7 +223,7 @@ export default function Portfolio() {
               </div>
               <div className="flex-1 pb-8">
                 <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
-                  ISTAD: Eazy Found - Service Listing Website
+                  ISTAD:  EAZY FOUND - SERVICE LISTING WEBSITE
                 </h3>
                 <p className="text-sm text-gray-400 mb-4 tracking-wide">2024.09 - 2024.10</p>
                 <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
@@ -264,9 +234,9 @@ export default function Portfolio() {
         </div>
 
          <div className="max-w-4xl ml-8">
-          <h2 className="text-sm font-normal text-gray-400 tracking-[0.2em] mb-16">Education</h2>
+          <h2 className="text-sm font-bold text-gray-400 tracking-[0.2em] mb-16">EDUCATION</h2>
 
-          <div className="space-y-16">
+          <div>
             {/* Project 1 */}
             <div className="flex gap-8 group hover:bg-gray-50 p-4 rounded-lg transition-all duration-300 -ml-4">
               <div className="flex flex-col items-center pt-1">
@@ -275,7 +245,7 @@ export default function Portfolio() {
               </div>
               <div className="flex-1 pb-8">
                 <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
-                  Korea Software HRD Center
+                  KOREA SOFTWARE HRD CENTER
                 </h3>
                 <p className="text-sm text-gray-400 mb-4 tracking-wide">2025.04 - 2025.06</p>
                 <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
@@ -291,7 +261,7 @@ export default function Portfolio() {
               </div>
               <div className="flex-1 pb-8">
                 <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
-                  Institute of Science and Technology Advanced Development - ISTAD
+                  INSTITUTE OF SCIENCE AND TECHNOLOGY ADVANCED DEVELOPMENT -ISTAD
                 </h3>
                 <p className="text-sm text-gray-400 mb-4 tracking-wide">2024.08 - 2024.10</p>
                 <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
@@ -306,7 +276,7 @@ export default function Portfolio() {
               </div>
               <div className="flex-1 pb-8">
                 <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
-                  RUPP - Royal University of Phnom Penh 
+                  RUPP -ROYAL UNIVERSITY OF PHNOM PENH
                 </h3>
                 <p className="text-sm text-gray-400 mb-4 tracking-wide">2021 - 2024</p>
                 <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
@@ -323,7 +293,7 @@ export default function Portfolio() {
       <section id="contact" className="bg-gradient-to-r from-[#1a237e] via-purple-600 to-pink-500 py-20 text-white">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl ml-8">
-            <h2 className="text-5xl font-light mb-16 tracking-wide">Get in touch_</h2>
+            <TypewriterHeading text="Get in touch_" className="text-5xl font-light mb-16 tracking-wide"></TypewriterHeading>
 
             <div className="space-y-8 text-lg">
               <div className="flex items-center space-x-4">

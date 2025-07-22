@@ -121,7 +121,7 @@ export default function Portfolio() {
                 isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
               }`}
             >
-              <h1 className="text-6xl lg:text-7xl font-bold tracking-wide leading-tight hover:text-blue-100 transition-colors duration-500">
+              <h1 className="text-6xl lg:text-7xl font-normall tracking-wide leading-tight hover:text-blue-100 transition-colors duration-500">
                 Oun Markara
               </h1>
               <div className="text-base text-white leading-relaxed max-w-2xl space-y-1">

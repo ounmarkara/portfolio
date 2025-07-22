@@ -12,9 +12,8 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: 'Markara Oun',
+  description: 'I am passionate full-stack developer focused on building efficient, scalable web applications using Spring Boot and Next.js. Recently, I developed a full-stack project with PostgreSQL, managing everything from API design to responsive UI.',
 }
 
 export default function RootLayout({

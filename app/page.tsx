@@ -206,9 +206,10 @@ export default function Portfolio() {
                 <div className="w-px h-32 bg-gray-300 mt-4 group-hover:bg-blue-400 transition-colors duration-300"></div>
               </div>
               <div className="flex-1 pb-8">
-                <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
+                <Link href={"https://lumnov.kshrd.app/"}>  <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
                   kSHRD: LUMNOV - RENTAL COMMUNITY PLATFORM
-                </h3>
+                </h3></Link>
+               
                 <p className="text-sm text-gray-400 mb-4 tracking-wide">2025.04 - 2025.06</p>
                 <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
                   LUMNOV makes it easy to find available rooms and houses, helping you start discovering your next home and connect with a community that feels like family.</p>
@@ -222,9 +223,10 @@ export default function Portfolio() {
                 <div className="w-px h-32 bg-gray-300 mt-4 group-hover:bg-blue-400 transition-colors duration-300"></div>
               </div>
               <div className="flex-1 pb-8">
-                <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
+                <Link href={"https://ezfound-cstad.vercel.app"}> <h3 className="text-blue-600 font-normal text-base mb-3 tracking-wide group-hover:text-blue-700 transition-colors duration-300">
                   ISTAD:  EAZY FOUND - SERVICE LISTING WEBSITE
-                </h3>
+                </h3></Link>
+               
                 <p className="text-sm text-gray-400 mb-4 tracking-wide">2024.09 - 2024.10</p>
                 <p className="text-gray-600 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
                   A modern platform designed to connect users with various local services efficiently.</p>             

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 export default function TypewriterHeading({
   text,
   className = "",
-  speed = 70,
+  speed = 100,
 }: {
   text: string
   className?: string
